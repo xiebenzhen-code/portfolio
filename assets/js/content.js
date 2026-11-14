@@ -253,9 +253,9 @@ window.SITE = {
         { p: ['四个人物各有固定形象：年龄、脸型、衣服的磨损位置都不变。周青山那件棉衣从第一场穿到最后一场，只有土、汗和褶皱在变。'] },
         { row: [
           ['assets/img/hp-cast-1.jpg', '周青山 · 二十六岁，侦察兵'],
-          ['assets/img/hp-cast-2.jpg', '冯先生 · 五十岁上下，教过他算学'],
-          ['assets/img/hp-cast-3.jpg', '小女孩 · 九、十岁，在地窖口取东西'],
-          ['assets/img/hp-cast-4.jpg', '营长 · 收营的人，话很少']
+          ['assets/img/hp-cast-2.jpg', '冯先生 · 五十岁上下'],
+          ['assets/img/hp-cast-3.jpg', '小女孩 · 九、十岁'],
+          ['assets/img/hp-cast-4.jpg', '营长 · 收营的人']
         ], ratio: '4/5' },
         { h: '场景' },
         { p: ['全片十二场，几乎都在室外：土路、村口、学校院子、掩体、弹坑。颜色从材料里来——干土、枯秆、旧砖、褪色的棉布，全片只有很少几处红。光只用天光、油灯和火光，不打英雄逆光。'] },
@@ -270,8 +270,8 @@ window.SITE = {
         { h: '物件' },
         { p: ['物件都按剧本里的动作设计：信纸的折痕要能反复折回原样，四轮车的链条是后来拼上去的，木匣的锁扣早就坏了。'] },
         { row: [
-          ['assets/img/hp-prop-1.jpg', '秀云的字。折得很小，能塞进胸口'],
-          ['assets/img/hp-prop-2.jpg', '四轮脚踏车。暗红漆掉了大半'],
+          ['assets/img/hp-prop-1.jpg', '秀云的字，折得很小'],
+          ['assets/img/hp-prop-2.jpg', '四轮脚踏车，漆掉大半'],
           ['assets/img/hp-prop-3.jpg', '掩体里的木匣'],
           ['assets/img/hp-prop-4.jpg', '他背的那支枪']
         ], ratio: '1/1' },
