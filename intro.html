@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Benzhen｜AI 应用产品 · Agent 工作流 · AI 视觉</title>
+<meta name="description" content="AI 应用产品、Agent 工作流设计与 AI 视觉设计作品集。">
+<meta name="theme-color" content="#17171A">
+<link rel="canonical" href="https://benzhenlab.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Benzhen">
+<meta property="og:url" content="https://benzhenlab.com/">
+<meta property="og:title" content="Benzhen｜AI 应用产品 · Agent 工作流 · AI 视觉">
+<meta property="og:description" content="把想法，做成会运行的东西。">
+<meta property="og:image" content="https://benzhenlab.com/assets/img/msg-street.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317171A'/%3E%3Cpath d='M14 26V14h12M50 38v12H38' stroke='%23B9AFA3' stroke-width='2' fill='none'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%238F3A2C'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/img/msg-street.jpg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<main class="splash" id="splash" role="link" tabindex="0" aria-label="进入作品集">
+  <div class="slides" id="slides"></div>
+  <div class="veil"></div>
+  <div class="grid"></div>
+  <span class="crop tl"></span><span class="crop tr"></span><span class="crop bl"></span><span class="crop br"></span>
+
+  <div class="top">
+    <b id="brand"></b>
+    <span class="tc mono" id="tc">TC 00:00:00:00</span>
+  </div>
+
+  <div class="center">
+    <h1 id="title"></h1>
+    <div class="roles" id="roles"></div>
+  </div>
+
+  <div class="enter"><i></i><span id="enter"></span></div>
+  <div class="count mono" id="count"></div>
+</main>
+
+<div class="curtain" id="curtain"></div>
+
+<script src="assets/js/content.js"></script>
+<script src="assets/js/fx.js"></script>
+<script>
+const S = window.SITE, $ = s => document.querySelector(s);
+$('#brand').textContent = S.name;
+$('#title').innerHTML = S.splash.title.map(t=>`<span>${t}</span>`).join('');
+$('#roles').innerHTML = S.roles.map(r=>`<span>${r}</span>`).join('');
+$('#enter').textContent = S.splash.enter;
+
+/* React Bits 动效 */
+FX.noise($('#splash'), {opacity:.14, fps:24});
+FX.blurText($('#title'), {animateBy:'letters', delay:55, distance:30});
+FX.decrypt($('#brand'), {animateOn:'load', speed:60, characters:'ABCDEFGHIJKLMNOPQRSTUVWXYZ'});
+FX.magnet(document.querySelector('.enter i'), {padding:80, magnetStrength:3, maxOffset:14});
+
+/* 背景轮播 */
+const box = $('#slides');
+box.innerHTML = S.splash.images.map(src=>`<img src="${src}" alt="">`).join('');
+const imgs = [...box.children]; let k = 0;
+const show = () => {
+  imgs.forEach((im,i)=>im.classList.toggle('on', i===k));
+  $('#count').textContent = `${String(k+1).padStart(2,'0')} / ${String(imgs.length).padStart(2,'0')}`;
+};
+show();
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches) setInterval(()=>{ k=(k+1)%imgs.length; show(); }, 5200);
+
+/* 时间码 */
+const t0 = performance.now();
+(function tick(){
+  const f = Math.floor((performance.now()-t0)/1000*24), s = Math.floor(f/24);
+  const p = n => String(n).padStart(2,'0');
+  $('#tc').textContent = `TC ${p(Math.floor(s/3600))}:${p(Math.floor(s/60)%60)}:${p(s%60)}:${p(f%24)}`;
+  requestAnimationFrame(tick);
+})();
+
+/* 进入作品集 */
+let going = false;
+function go(){
+  if(going) return; going = true;
+  $('#curtain').classList.add('go');
+  setTimeout(()=>location.href='index.html', matchMedia('(prefers-reduced-motion:reduce)').matches ? 0 : 720);
+}
+$('#splash').addEventListener('click', go);
+addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
+</script>
+</body>
+</html>

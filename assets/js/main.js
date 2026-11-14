@@ -59,6 +59,7 @@ $('#about-contact').innerHTML = CONTACTS.map(c => `<div><dt>${c[0]}</dt><dd>${
   c[2] ? `<a href="${c[2]}" ${ext(c[2])}>${c[1]}</a>`
        : `<button class="copy-id" type="button" data-copy="${c[1]}" aria-label="复制${c[0]}">${c[1]}<span>复制</span></button>`
 }</dd></div>`).join('');
+$('#tl').innerHTML = (S.timeline||[]).map(x => `<li><div class="t">${x.time}</div><div><h3>${x.title}</h3><div class="org">${x.org}</div><p>${x.desc}</p></div></li>`).join('');
 $('#stats').innerHTML = A.stats.map(s => `<div class="stat"><b data-to="${s[0]}">${s[0]}</b><span class="u">${s[1]}</span><p>${s[2]}</p></div>`).join('');
 
 /* 3 精选项目 */
@@ -141,7 +142,7 @@ function videoBlock(b, ctx){
     </a>${b.cap ? `<figcaption>${b.cap}</figcaption>` : ''}</figure>`;
   }
   const inner = isFile(b.video)
-    ? `<video controls playsinline preload="none"${b.poster ? ` poster="${b.poster}"` : ''}><source src="${b.video}"></video>`
+    ? `<video controls playsinline preload="none"${(b.poster || (ctx && ctx.cover)) ? ` poster="${b.poster || ctx.cover}"` : ''}><source src="${b.video}"></video>`
     : `<iframe src="${b.video}" title="${b.cap || '项目视频'}" loading="lazy"
          allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; fullscreen"
          allowfullscreen></iframe>`;
