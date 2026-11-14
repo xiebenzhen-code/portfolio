@@ -25,7 +25,7 @@ window.SITE = {
 
   /* 个人经历 */
   about: {
-    photo: '',                          // 头像路径，例如 'assets/img/avatar.jpg'；留空显示占位
+    photo: 'assets/img/avatar.jpg',     // 头像：手绘速写，4:5；换图直接替换同名文件
     title: '从片场走到 AI',
     text: [
       '四川传媒学院广播电视编导专业，2026 届。在剧组做过制片、灯光、剪辑，拍过短片、短剧和纪录片；也给 AIGC 漫剧做过提示词与生图分镜，61 集上线腾讯视频。',
