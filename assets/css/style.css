@@ -299,6 +299,10 @@ dialog.detail[open]{animation:slide .45s var(--ease)}
 .d-row figure{margin:0}
 .d-row img{width:100%;aspect-ratio:var(--r,4/5);object-fit:cover;border-radius:2px;background:var(--paper-2)}
 .d-row figcaption{font-size:12px;line-height:1.6;color:var(--taupe);margin-top:8px}
+/* 风格提示词：整段引文式排版，左侧一道细线 */
+.d-prompt{margin:16px 0 8px;padding:2px 0 2px 18px;border-left:2px solid var(--ink)}
+.d-prompt p{font-size:15px;line-height:1.85;color:var(--taupe);max-width:44em}
+.d-prompt p + p{margin-top:12px}
 .d-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin-top:16px}
 .d-flow div{background:var(--ink);color:var(--paper);padding:12px;border-radius:2px;font-size:13px;line-height:1.5}
 .d-flow b{display:block;font-size:14px;margin-bottom:6px}
