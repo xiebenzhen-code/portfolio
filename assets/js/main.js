@@ -149,6 +149,13 @@ function videoBlock(b, ctx){
   return `<figure class="d-vfig"><div class="d-video">${inner}</div>${b.cap ? `<figcaption>${b.cap}</figcaption>` : ''}</figure>`;
 }
 
+/* 设定图一排：{ row: [[src, 说明], …], ratio: '4/5' }；手机上变两列 */
+function rowBlock(b){
+  const n = Math.min(b.row.length, 4);
+  return `<div class="d-row" style="--r:${b.ratio || '4/5'};--n:${n}">${b.row.map(x =>
+    `<figure><img src="${x[0]}" alt="${x[1] || ''}" loading="lazy">${x[1] ? `<figcaption>${x[1]}</figcaption>` : ''}</figure>`).join('')}</div>`;
+}
+
 /* 多视频并排：{ videos: [{ video, cap, poster, label }, …] } */
 function videosBlock(b, ctx){
   return `<div class="d-vgrid">${b.videos.map(v => videoBlock(v, ctx)).join('')}</div>`;
@@ -162,6 +169,7 @@ function block(b, ctx){
   if(b.videos) return videosBlock(b, ctx);
   if(b.img)   return fig(b.img, b.cap);
   if(b.pair) return `<div class="d-pair${b.frame ? ' d-pair--ui' : ''}">${b.pair.map(x => fig(x[0], x[1])).join('')}</div>`;
+  if(b.row) return rowBlock(b);
   if(b.phones) return `<div class="d-phones">${b.phones.map(x =>
     `<figure><img src="${x[0]}" alt="${x[1] || ''}" loading="lazy"><figcaption>${x[1] || ''}</figcaption></figure>`).join('')}</div>`;
   if(b.flow) return `<div class="d-flow" role="img" aria-label="系统架构图">${b.flow.map(s => `<div><b>${s[0]}</b>${s.slice(1).map(x => `<span>${x}</span>`).join('')}</div>`).join('')}</div>${b.note ? `<p class="d-note">${b.note}</p>` : ''}`;
