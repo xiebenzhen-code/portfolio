@@ -190,8 +190,9 @@ window.SITE = {
          2. 缘起或拍摄难点，两三段，放在视频前面或后面
          3. 想加剧照就发图，命名 pixiu-01.jpg 放进 assets/img/ */
       body: [
-        { video: 'https://player.bilibili.com/player.html?bvid=BV14DWC6hESZ&page=1&high_quality=1&danmaku=0&autoplay=0',
-          cap: '全片在 B 站播放。' }
+        { video: 'https://www.bilibili.com/video/BV14DWC6hESZ/',
+          poster: 'assets/img/pixiu-cover.jpg',
+          cap: '全片 10 分 55 秒，点击封面去 B 站观看。', label: '在 B 站观看全片' }
       ],
       links: [['在 B 站看原片', 'https://www.bilibili.com/video/BV14DWC6hESZ/']]
     },
@@ -207,8 +208,9 @@ window.SITE = {
          2. 缘起或拍摄难点
          3. 剧照：命名 jiayu-01.jpg 放进 assets/img/ */
       body: [
-        { video: 'https://player.bilibili.com/player.html?bvid=BV16vsG6PEht&page=1&high_quality=1&danmaku=0&autoplay=0',
-          cap: '全片在 B 站播放。' }
+        { video: 'https://www.bilibili.com/video/BV16vsG6PEht/',
+          poster: 'assets/img/jiayu-cover.jpg',
+          cap: '全片 28 分 12 秒，点击封面去 B 站观看。', label: '在 B 站观看全片' }
       ],
       links: [['在 B 站看原片', 'https://www.bilibili.com/video/BV16vsG6PEht/']]
     },

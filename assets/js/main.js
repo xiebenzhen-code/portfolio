@@ -126,7 +126,8 @@ const fig = (s, c) => `<figure><img src="${s}" alt="${c || ''}" loading="lazy">$
    B 站 / YouTube 播放器地址 → 嵌 iframe
    抖音等不支持嵌入的 → 封面 + 播放钮，点击去站外看（不会黑屏，也不占站点流量） */
 const isFile = src => /\.(mp4|webm|mov)(\?|#|$)/i.test(src);
-const noEmbed = src => /douyin\.com|iesdouyin\.com/i.test(src);
+/* B 站播放器对外站嵌入有校验，访客常见「无法正常播放」，比抖音更不稳定，一律用封面 + 跳转 */
+const noEmbed = src => /douyin\.com|iesdouyin\.com|bilibili\.com|b23\.tv/i.test(src);
 
 function videoBlock(b, ctx){
   if(noEmbed(b.video)){
@@ -135,7 +136,7 @@ function videoBlock(b, ctx){
     return `<figure class="d-vfig"><a class="d-vout" href="${b.video}" target="_blank" rel="noopener">
       ${poster ? `<img src="${poster}" alt="${b.cap || '影片封面'}" loading="lazy">` : ''}
       <span class="d-vplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
-      <span class="d-vlabel">${b.label || '在抖音观看'}</span>
+      <span class="d-vlabel">${b.label || (/bilibili|b23\.tv/i.test(b.video) ? '在 B 站观看' : '在抖音观看')}</span>
       <span class="d-vsr">（在新标签页打开）</span>
     </a>${b.cap ? `<figcaption>${b.cap}</figcaption>` : ''}</figure>`;
   }
